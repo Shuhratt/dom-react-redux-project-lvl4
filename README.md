@@ -4,7 +4,7 @@
 
 ## Requirements
 
-* [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+* https://lit-citadel-04336.herokuapp.com/
 
 ## Install
 
