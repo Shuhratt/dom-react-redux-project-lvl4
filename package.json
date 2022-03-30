@@ -8,7 +8,7 @@
     "test": "jest",
     "prebuild": "rm -rf dist",
     "build": "webpack",
-    "start": "fastify start server/plugin.js -l info -P -a 0.0.0.0"
+    "start": "fastify start server/plugin.js -l info -P"
   },
   "jest": {
     "transform": {}
@@ -40,7 +40,8 @@
     "popper.js": "^1.16.1",
     "pug": "^3.0.2",
     "react": "^17.0.2",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.3",
