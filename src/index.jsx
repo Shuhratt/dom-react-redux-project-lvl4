@@ -6,13 +6,18 @@ import "core-js/stable/index.js";
 import "regenerator-runtime/runtime.js";
 
 import "../assets/application.scss";
+import { AuthProvider } from "../context/auth";
 
 if (process.env.NODE_ENV !== "production") {
   localStorage.debug = "chat:*";
 }
 
 createRoot(document.getElementById("chat")).render(
-  <Suspense fallback={null}>
-    <App />
-  </Suspense>
+  <React.StrictMode>
+    <Suspense fallback={null}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </Suspense>
+  </React.StrictMode>
 );
