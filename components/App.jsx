@@ -3,20 +3,30 @@ import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Main from "./Main";
 import Login from "./Login";
 import { RequireAuth } from "./RequredAuth";
+import { useAuth } from "../context/auth";
 
 export function App() {
+  const { isAuthed } = useAuth();
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           index
           element={
-            <RequireAuth>
+            <RequireAuth isAuthed={isAuthed} redirectPath={"/login"}>
               <Main />
             </RequireAuth>
           }
         />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <RequireAuth isAuthed={!isAuthed} redirectPath={"/"}>
+              <Login />
+            </RequireAuth>
+          }
+        />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>

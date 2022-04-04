@@ -96,6 +96,7 @@ export default (app, defaultState = {}) => {
     }
 
     const token = app.jwt.sign({ userId: user.id });
+    reply.header("Set-Cookie", "HttpOnly;Secure;SameSite=None");
     reply.send({ token, username });
   });
 

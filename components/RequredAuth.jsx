@@ -1,13 +1,9 @@
 import React from "react";
-import { useAuth } from "../context/auth";
 import { Navigate } from "react-router-dom";
 
-export const RequireAuth = ({ children }) => {
-  const { isAuthed } = useAuth();
-  console.log(isAuthed, "requred");
-
+export const RequireAuth = ({ children, isAuthed, redirectPath }) => {
   if (!isAuthed) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={redirectPath} replace />;
   }
 
   return children;

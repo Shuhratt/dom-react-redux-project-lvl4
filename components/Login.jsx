@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import styles from "../assets/Login.module.scss";
 import { loginFetcher } from "../api/login";
 import { setLocalStorage } from "../lib/storage/set-locale-storage";
-import { useNavigate } from "react-router-dom";
+import { isLocalStorageByKey } from "../lib/storage/is-local-storage";
+import { useAuth } from "../context/auth";
 
 const Login = () => {
-  let navigate = useNavigate();
+  const [isSuccess, setSuccess] = useState(false);
+  const { setIsAuthed } = useAuth();
 
   return (
     <div className="col-12 col-sm-8 mx-auto">
+      {isSuccess && (
+        <div className="alert alert-success" role="alert">
+          Вход выполнен! Перенаправляем на главную
+        </div>
+      )}
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={async (values, { setSubmitting, setFieldError }) => {
@@ -17,13 +24,20 @@ const Login = () => {
 
           if (data) {
             const { token } = data;
-            setLocalStorage("token", token);
-            setTimeout(() => navigate("../"), 300);
+            if (!isLocalStorageByKey("token")) {
+              setLocalStorage("token", token);
+              setSuccess(true);
+
+              setTimeout(() => {
+                setIsAuthed(true);
+              }, 500);
+            } else {
+              alert("Уже вошёл");
+            }
           } else {
             setFieldError("email", "Не верный логин");
             setFieldError("password", "Не верный пароль");
           }
-
           setSubmitting(false);
         }}
       >
