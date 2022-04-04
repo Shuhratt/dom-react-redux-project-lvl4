@@ -1,17 +1,30 @@
 import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import styles from "../assets/Login.module.scss";
+import { loginFetcher } from "../api/login";
+import { setLocalStorage } from "../lib/storage/set-locale-storage";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  let navigate = useNavigate();
+
   return (
     <div className="col-12 col-sm-8 mx-auto">
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={async (values, { setSubmitting, setFieldError }) => {
+          const data = await loginFetcher(values);
+
+          if (data) {
+            const { token } = data;
+            setLocalStorage("token", token);
+            setTimeout(() => navigate("../"), 300);
+          } else {
+            setFieldError("email", "Не верный логин");
+            setFieldError("password", "Не верный пароль");
+          }
+
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => (

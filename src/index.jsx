@@ -11,8 +11,9 @@ import { AuthProvider } from "../context/auth";
 if (process.env.NODE_ENV !== "production") {
   localStorage.debug = "chat:*";
 }
+const chat = document.getElementById("chat");
 
-createRoot(document.getElementById("chat")).render(
+createRoot(chat).render(
   <React.StrictMode>
     <Suspense fallback={null}>
       <AuthProvider>

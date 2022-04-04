@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../context/auth";
+import React from "react";
+import { useAuth } from "../context/auth";
 
 const Main = () => {
-  const { accessToken } = useContext(AuthContext);
-  return <div>Main {JSON.stringify(accessToken)}</div>;
+  const { isAuthed } = useAuth();
+  return <div>Main {isAuthed}</div>;
 };
 
 export default Main;
