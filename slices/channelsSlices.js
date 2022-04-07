@@ -10,6 +10,7 @@ const channelsData = createSlice({
   name: "channels",
   reducers: {
     getChannels: (state, action) => {
+      //state.channels = [...state.channels, action.payload];
       state.channels = action.payload;
     },
   },

@@ -11,7 +11,7 @@ const messageData = createSlice({
   // Редьюсеры в слайсах мутируют состояние и ничего не возвращают наружу
   reducers: {
     getMessage: (state, action) => {
-      state.value = action.payload;
+      state.messages = action.payload;
     },
   },
 });
