@@ -8,8 +8,8 @@ Toolkit вводит новое понятие слайс (срез), котор
  */
 
 import { configureStore } from "@reduxjs/toolkit";
-import messages from "./messageSlices.js";
-import channels from "./channelsSlices.js";
+import messages from "../slices/messageSlices.js";
+import channels from "../slices/channelsSlices.js";
 
 export default configureStore({
   reducer: {

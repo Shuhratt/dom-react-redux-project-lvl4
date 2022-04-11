@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { isLocalStorageByKey } from "../lib/storage/is-local-storage.js";
 import { getLocaleStorage } from "../lib/storage/get-local-storage";
 
-export const AuthContext = createContext({});
+const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   let [isAuthed, setIsAuthed] = useState(isLocalStorageByKey("token"));

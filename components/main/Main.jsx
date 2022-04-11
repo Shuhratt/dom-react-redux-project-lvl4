@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../../context/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getMessage } from "../../slices/messageSlices";
 import { getMessageFetcher } from "../../api/getMessage.js";
 import { getChannels } from "../../slices/channelsSlices.js";
@@ -38,19 +38,17 @@ const Main = () => {
   }, [accessToken]);
 
   return (
-    isAuthed && (
-      <MainContainer header={<Header />}>
-        <Sidebar>
-          <AddChannels />
-          <Channels />
-          {isAuthed && "Вошёл"}
-        </Sidebar>
-        <Content>
-          <Messages />
-          <Form />
-        </Content>
-      </MainContainer>
-    )
+    <MainContainer header={<Header />}>
+      <Sidebar>
+        <AddChannels />
+        <Channels />
+        {isAuthed && "Вошёл"}
+      </Sidebar>
+      <Content>
+        <Messages />
+        <Form />
+      </Content>
+    </MainContainer>
   );
 };
 

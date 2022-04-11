@@ -14,7 +14,7 @@ const Login = () => {
     <div className="col-12 col-sm-8 mx-auto">
       {isSuccess && (
         <div className="alert alert-success" role="alert">
-          Вход выполнен! Перенаправляем на главную
+          Вход выполнен! Перенаправляем на главную...
         </div>
       )}
       <Formik
@@ -23,9 +23,10 @@ const Login = () => {
           const data = await loginFetcher(values);
 
           if (data) {
-            const { token } = data;
+            const { token, username } = data;
             if (!isLocalStorageByKey("token")) {
               setLocalStorage("token", token);
+              setLocalStorage("username", username);
               setSuccess(true);
 
               setTimeout(() => {

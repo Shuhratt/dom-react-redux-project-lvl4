@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { App } from "../components/App";
-import store from "../slices/index.js";
+import store from "../store/index.js";
 import { AuthProvider } from "../context/auth";
 
 import "core-js/stable/index.js";

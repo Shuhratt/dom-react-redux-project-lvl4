@@ -1,9 +1,9 @@
-import API from "./apiConfing.js";
 import axios from "axios";
+import { prefix } from "../src/routes.js";
 
 export const getMessageFetcher = (token) => {
   return axios
-    .get(`${API.base}/data`, {
+    .get(`${prefix}/data`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

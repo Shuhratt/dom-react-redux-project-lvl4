@@ -1,9 +1,9 @@
 import axios from "axios";
-import API from "./apiConfing.js";
+import { prefix } from "../src/routes.js";
 
 export const loginFetcher = ({ email, password }) => {
   return axios
-    .post(`${API.base}/login`, {
+    .post(`${prefix}/login`, {
       username: email,
       password,
     })
