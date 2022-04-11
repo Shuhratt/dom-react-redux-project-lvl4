@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import styles from "../assets/Login.module.scss";
-import { loginFetcher } from "../api/login";
-import { setLocalStorage } from "../lib/storage/set-locale-storage";
-import { isLocalStorageByKey } from "../lib/storage/is-local-storage";
-import { useAuth } from "../context/auth";
+import styles from "../../assets/Login.module.scss";
+import { loginFetcher } from "../../api/login";
+import { setLocalStorage } from "../../lib/storage/set-locale-storage";
+import { isLocalStorageByKey } from "../../lib/storage/is-local-storage";
+import { useAuth } from "../../context/auth";
 
 const Login = () => {
   const [isSuccess, setSuccess] = useState(false);
