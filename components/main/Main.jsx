@@ -42,7 +42,7 @@ const Main = () => {
       <Sidebar>
         <AddChannels />
         <Channels />
-        {isAuthed && "Вошёл"}
+        {/*{isAuthed && "Вошёл"}*/}
       </Sidebar>
       <Content>
         <Messages />

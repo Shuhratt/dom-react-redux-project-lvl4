@@ -10,15 +10,22 @@ const Channels = () => {
   return (
     <>
       {channels && (
-        <ul className="nav flex-column nav-pills nav-fill px-2">
+        <ul className="nav flex-column nav-pills nav-fill px-2 mt-3">
           {channels.map(({ id, name }) => {
-            return <Channel name={name} key={id} />;
+            return (
+              <Channel
+                name={name}
+                key={id}
+                currentChannelId={currentChannelId}
+                id={id}
+              />
+            );
           })}
         </ul>
       )}
 
-      <pre>{JSON.stringify(channels, null, 2)}</pre>
-      <pre>{JSON.stringify(currentChannelId, null, 2)}</pre>
+      {/*<pre>{JSON.stringify(channels, null, 2)}</pre>*/}
+      {/*<pre>{JSON.stringify(currentChannelId, null, 2)}</pre>*/}
     </>
   );
 };

@@ -11,8 +11,8 @@ const Form = () => {
   const onSubmitPostMessage = (e) => {
     e.preventDefault();
 
-    socket.emit("newMessage", { message, username }, (res) => {
-      if (res.status === "ok") {
+    socket.emit("newMessage", { message, username }, (response) => {
+      if (response.status === "ok") {
         setMessage("");
       }
     });
