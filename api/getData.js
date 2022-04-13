@@ -1,7 +1,7 @@
 import axios from "axios";
 import { prefix } from "../src/routes.js";
 
-export const getMessageFetcher = (token) => {
+export const getData = (token) => {
   return axios
     .get(`${prefix}/data`, {
       headers: {

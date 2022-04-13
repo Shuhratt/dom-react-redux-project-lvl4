@@ -46,7 +46,7 @@ const Channel = ({ name, activeID, id, setActiveID }) => {
         <Icon isActive={isActive} onClick={() => {}} title={"Редактировать"}>
           <FaPenSquare />
         </Icon>
-        <Icon isActive={isActive} title={"Удалить"}>
+        <Icon isActive={isActive} onClick={() => {}} title={"Удалить"}>
           <FaTrash />
         </Icon>
       </div>

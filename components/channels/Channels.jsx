@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Channel from "./Channel";
 import { useSelector } from "react-redux";
+import { getChannels } from "../../api/getChannels.js";
 
 const Channels = () => {
   const { channels, currentChannelId } = useSelector(
     (state) => state.channelsInfo.channels
   );
   const [activeID, setActiveID] = useState(currentChannelId ?? 1);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await getChannels();
+      console.log(data);
+    };
+    fetch();
+  }, []);
 
   return (
     <>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useAuth } from "../../context/auth";
 import { useDispatch } from "react-redux";
 import { getMessage } from "../../slices/messageSlices";
-import { getMessageFetcher } from "../../api/getMessage.js";
+import { getData } from "../../api/getData.js";
 import { getChannels } from "../../slices/channelsSlices.js";
 import Form from "../chat/form/Form";
 import AddChannels from "../channels/AddChannels";
@@ -23,7 +23,7 @@ const Main = () => {
   useEffect(() => {
     if (accessToken) {
       const fetch = async () => {
-        const response = await getMessageFetcher(accessToken);
+        const response = await getData(accessToken);
         if (response) {
           const dataForChannels = {
             channels: response?.channels,
