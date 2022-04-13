@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Channel from "./Channel";
 import { useSelector } from "react-redux";
 
@@ -6,6 +6,7 @@ const Channels = () => {
   const { channels, currentChannelId } = useSelector(
     (state) => state.channelsInfo.channels
   );
+  const [activeID, setActiveID] = useState(currentChannelId ?? 1);
 
   return (
     <>
@@ -16,8 +17,9 @@ const Channels = () => {
               <Channel
                 name={name}
                 key={id}
-                currentChannelId={currentChannelId}
                 id={id}
+                activeID={activeID}
+                setActiveID={setActiveID}
               />
             );
           })}

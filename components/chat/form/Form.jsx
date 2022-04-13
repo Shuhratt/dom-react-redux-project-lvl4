@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import socket from "../../../socket/socket";
 import { getLocaleStorage } from "../../../lib/storage/get-local-storage";
 
+import { FaPaperPlane } from "react-icons/fa";
+
 const Form = () => {
   const [message, setMessage] = useState("");
-  console.log("render Form");
+  // console.log("render Form");
 
   const username = getLocaleStorage("username");
   const onSubmitPostMessage = (e) => {
@@ -32,8 +34,12 @@ const Form = () => {
             value={message}
             required={true}
           />
-          <button type="submit" className="btn btn-primary">
-            Отправить
+          <button
+            type="submit"
+            className="btn btn-primary d-flex align-items-center"
+          >
+            Отправить&nbsp;&nbsp;
+            <FaPaperPlane />
           </button>
         </div>
       </form>
